@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ShowPic.Picture.Views.SinglePictureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShowPic.Picture.Views"
+             mc:Ignorable="d" 
+            xmlns:conv="clr-namespace:ShowPic.Picture.DataConverter"
+             Height="1080" Width="1920"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <conv:DataConverter x:Key="dataConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Image  Source="{Binding Path=ImgData,Converter={StaticResource dataConverter}}"  Stretch="UniformToFill" />
+        </Grid>
+        
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <Label Content="名称:" FontSize="30" Margin="0  200 0 0"/>
+                <TextBlock Text="{Binding ImgName}" Margin="0 10 0 0" FontSize="30" TextWrapping="Wrap"/>
+
+                <Label Content="分类:" FontSize="30" Margin="0 100 0 0"/>
+                <TextBlock Text="{Binding ImgTag}" Margin="0 10 0 0" FontSize="30" TextWrapping="Wrap"/>
+
+                <Label Content="描述:" FontSize="30"  Margin="0 100 0 0"/>
+                <TextBlock Text="{Binding ImgComment}" Margin="0 10 0 0" FontSize="30" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

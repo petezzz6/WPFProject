@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="ShowPic.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShowPic.Views"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:ctrl="clr-namespace:ShowPic.Utils;assembly=ShowPic.Utils"
+             xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             
+             prism:ViewModelLocator.AutoWireViewModel="True"  
+             >
+
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="HandOverStyle">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="TextBlock.Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        </UserControl.Resources>
+
+            <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="Width" Value="600"></Setter>
+            <Setter Property="Height" Value="400"></Setter>
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="用户名：" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3"></TextBlock>
+        <TextBox  Grid.Row="1" Grid.Column="2" Height="35"
+                             HorizontalContentAlignment="Stretch"
+
+                             SpellCheck.IsEnabled="True"
+                  Text="{Binding UserName}"/>
+        <TextBlock Text="密码：" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3"></TextBlock>
+        <PasswordBox Grid.Column="2" Grid.Row="2"  Height="35"   ctrl:PasswordBoxHelper.Password ="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button  Width="100" Height="35" Content="取消"  Margin="5" Command="{Binding CancelCommand}" Style="{StaticResource HandOverStyle}"></Button>
+            <Button Grid.Column="2" Grid.Row="3" Width="100" Height="35" Content="管理员登录"  Margin="5" Command="{Binding LoginCommand}" Style="{StaticResource HandOverStyle}">
+            </Button>
+        </StackPanel>
+        <Border Grid.Row="4" Grid.ColumnSpan="4" Height="30" VerticalAlignment="Bottom"   >
+        </Border>
+        <Button   Grid.Row="2" Grid.Column="4"   Content="游客登陆" Width="100" Height="35" BorderThickness="0" Background="Transparent" CommandParameter="VisitorPictureView" Command="{Binding VisitorLoginCommand}" Style="{StaticResource HandOverStyle}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock TextDecorations="Underline" HorizontalAlignment="Center">
+                      <ContentPresenter />
+                    </TextBlock>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button  Grid.Row="1" Grid.Column="4"  Content="注册" Width="100" Height="35" BorderThickness="0" Background="Transparent" CommandParameter="RegisterAdminView" Command="{Binding RegisterAdminCommand}"  Style="{StaticResource HandOverStyle}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock TextDecorations="Underline" HorizontalAlignment="Center">
+                      <ContentPresenter />
+                        
+                    </TextBlock>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>

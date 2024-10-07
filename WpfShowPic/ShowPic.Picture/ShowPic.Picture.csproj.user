@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Views\AddPictureView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddComment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PageBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PictureView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SearchBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SinglePictureView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\VisitorPictureView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\AddPictureView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddComment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PictureView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SearchBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SinglePictureView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\VisitorPictureView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

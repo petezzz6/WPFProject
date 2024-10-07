@@ -48,16 +48,6 @@ namespace ShowPic.Picture.ViewModels
             this._dialogService.ShowDialog(nameof(AddPictureView));
         }
 
-        public static byte[] BitmapImageToBtyes(BitmapImage bitmap)
-        {
-            Stream s = bitmap.StreamSource;
-            s.Position = 0;
-            using (BinaryReader binaryReader = new BinaryReader(s))
-            {
-                byte[] bytes = binaryReader.ReadBytes((int)s.Length);
-                return bytes;
-            }
-        }
 
         #region command
 
@@ -77,6 +67,7 @@ namespace ShowPic.Picture.ViewModels
 
         public void Comment(object obj)
         {
+            LoggerHelper.loggerHelper.Trace(" Delete picture");
             int Id = (int)obj;
             DialogParameters para = new DialogParameters();
             para.Add("Id", Id);
@@ -127,7 +118,7 @@ namespace ShowPic.Picture.ViewModels
 
         public void Delete(object obj)
         {
-
+            LoggerHelper.loggerHelper.Trace(" Delete picture");
             MessageBoxResult dialogresult = MessageBox.Show("确认删除图片吗？", "删除",MessageBoxButton.YesNo);
             if(dialogresult == MessageBoxResult.Yes)
             {
@@ -135,6 +126,8 @@ namespace ShowPic.Picture.ViewModels
                 var res = PictureHttp.DeletePicture(id);
                 this.LoadPic();
                 MessageBox.Show("删除成功！");
+                LoggerHelper.loggerHelper.Trace(" Delete picture success");
+
             }
         }
 
@@ -183,6 +176,8 @@ namespace ShowPic.Picture.ViewModels
         #endregion
         public  void LoadPic()
         {
+            LoggerHelper.loggerHelper.Trace(" LoadPic");
+
             this.PictureObjects1.Clear();
             this.PictureObjects2.Clear();
             var pictures = PictureHttp.GetPictures(null, null, this.pageNum, this.pageSize);

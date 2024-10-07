@@ -16,6 +16,8 @@ namespace ShowPic.Web.Service
         {
             _dataContext.Pictureentities.Add(picture);
             this._dataContext.SaveChanges();
+            LoggerHelper.loggerHelper.Trace(" AddPicture success");
+
             return 0;
         }
 
@@ -34,6 +36,7 @@ namespace ShowPic.Web.Service
                     p = _dataContext.Pictureentities.FirstOrDefault(r => r.PicTag == Id);
                 }
             }
+            LoggerHelper.loggerHelper.Trace(" DeleteEditor success");
 
             return p;
         }
@@ -41,7 +44,7 @@ namespace ShowPic.Web.Service
         public bool DeletePicture(int Id)
         {
             Pictureentity p = _dataContext.Pictureentities.FirstOrDefault(r => r.PicId == Id);
-            if(p != null)
+            if (p != null)
             {
                 _dataContext.Remove(p);
                 _dataContext.SaveChanges();
@@ -52,22 +55,9 @@ namespace ShowPic.Web.Service
         public Page<Pictureentity> GetPictures(int pageNum, int pageSize, string? no = null, string? tag = null)
         {
             IQueryable<Pictureentity> pictures = null;
-            if (!string.IsNullOrEmpty(tag) && !string.IsNullOrEmpty(no))
-            {
-                pictures = _dataContext.Pictureentities.Where(r => r.PicTag.Contains(tag) && r.PicTag.Contains(no)).OrderBy(r => r.PicId);
-            }
-            else if (!string.IsNullOrEmpty(tag))
-            {
-                pictures = _dataContext.Pictureentities.Where(r => r.PicName.Contains(tag)).OrderBy(r => r.PicId);
-            }
-            else if (!string.IsNullOrEmpty(no))
-            {
-                pictures = _dataContext.Pictureentities.Where(r => r.PicTag.Contains(no)).OrderBy(r => r.PicId);
-            }
-            else
-            {
-                pictures = _dataContext.Pictureentities.Where(r => true).OrderBy(r => r.PicId);
-            }
+
+            pictures = _dataContext.Pictureentities.Where(r => true).OrderBy(r => r.PicId);
+
             int count = pictures.Count();
             List<Pictureentity> items;
             if (pageSize > 0)
@@ -78,6 +68,8 @@ namespace ShowPic.Web.Service
             {
                 items = pictures.ToList();
             }
+            LoggerHelper.loggerHelper.Trace(" GetPictures success");
+
             return new Page<Pictureentity>()
             {
                 count = count,
@@ -100,10 +92,10 @@ namespace ShowPic.Web.Service
         public bool RatePicture(int Id, sbyte? Rate)
         {
             Pictureentity p = _dataContext.Pictureentities.FirstOrDefault(r => r.PicId == Id);
-            if(p != null)
+            if (p != null)
             {
                 p.PicRate = Rate;
-                _dataContext.SaveChanges(); 
+                _dataContext.SaveChanges();
             }
             return true;
         }

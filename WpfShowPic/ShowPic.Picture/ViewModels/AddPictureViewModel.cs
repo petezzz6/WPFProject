@@ -10,6 +10,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using ShowPic.Entity;
+using ShowPic.Utils;
 using ShowPic.Utils.HttpUtils;
 
 namespace ShowPic.Picture.ViewModels
@@ -101,6 +102,9 @@ namespace ShowPic.Picture.ViewModels
 
         public void SelectPicture(object obj)
         {
+            LoggerHelper.loggerHelper.Trace("SelectPicture ");
+
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp*.jfif";
             if (openFileDialog.ShowDialog() == true)
@@ -132,6 +136,7 @@ namespace ShowPic.Picture.ViewModels
             }
             catch (FileNotFoundException ex)
             {
+                LoggerHelper.loggerHelper.Trace("FileNotFoundException,entered an invalid path ");
                 MessageBox.Show("未找到图片文件！请确认图片名称和路径是否正确！");
                 return;
             }
@@ -140,6 +145,8 @@ namespace ShowPic.Picture.ViewModels
             if (res)
             {
                 MessageBox.Show("添加成功！");
+                LoggerHelper.loggerHelper.Trace(" AddSPicutre success");
+
                 RequestClose?.Invoke((new DialogResult(ButtonResult.OK)));
             }
         }

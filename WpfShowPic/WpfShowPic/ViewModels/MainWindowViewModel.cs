@@ -15,6 +15,8 @@ using Microsoft.Win32;
 using System.IO;
 using ShowPic.Picture.Views;
 using ShowPic.Picture.ViewModels;
+using ShowPic.Utils;
+
 namespace ShowPic.ViewModels
 {
     public class MainWindowViewModel:IRegionMemberLifetime
@@ -58,6 +60,7 @@ namespace ShowPic.ViewModels
 
         private void LoadWindow()
         {
+            LoggerHelper.loggerHelper.Info("LoadWindow");
 
             _regionManager.RegisterViewWithRegion("HeaderRegion", typeof(SerachBox));
             _regionManager.RequestNavigate("HeaderRegion", nameof(SerachBox));
@@ -95,7 +98,7 @@ namespace ShowPic.ViewModels
 
         public void VisitorNavigation()
         {
-
+            LoggerHelper.loggerHelper.Info("VisitorNavigation");
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(VisitorPictureView));
 
             _regionManager.RegisterViewWithRegion("NaviRegion", typeof(VisitorNavi));
@@ -108,6 +111,7 @@ namespace ShowPic.ViewModels
 
         public void AdminNavigation()
         {
+            LoggerHelper.loggerHelper.Fatal("AdminNavigation");
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(PictureView));
 
             _regionManager.RegisterViewWithRegion("NaviRegion", typeof(AdminNavi));

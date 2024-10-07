@@ -15,6 +15,8 @@ using ShowPic.Picture.ViewModels;
 using ShowPic.Picture.Views;
 using ShowPic.ViewModels;
 using Prism.Regions;
+using NLog;
+using ShowPic.Utils;
 
 namespace ShowPic
 {
@@ -27,7 +29,6 @@ namespace ShowPic
         {
             return Container.Resolve<MainWindow>();
         }
-
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<LoginView>();
@@ -48,8 +49,7 @@ namespace ShowPic
             containerRegistry.RegisterSingleton<RegionManager>();
             containerRegistry.RegisterSingleton<UserList>();
             containerRegistry.RegisterSingleton<UserListViewModel>();
-
-
+            LoggerHelper.loggerHelper.Trace("RegisterSingleton completion");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
   </ItemGroup>
 
@@ -19,6 +20,12 @@
     <ProjectReference Include="..\ShowPic.Entity\ShowPic.Entity.csproj" />
     <ProjectReference Include="..\ShowPic.Picture\ShowPic.Picture.csproj" />
     <ProjectReference Include="..\ShowPic.Utils\ShowPic.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

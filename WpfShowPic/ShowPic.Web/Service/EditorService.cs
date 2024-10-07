@@ -1,4 +1,5 @@
 ﻿using ShowPic.Entity;
+using ShowPic.Utils;
 using ShowPic.Web;
 
 namespace ShowPic.Web.Service
@@ -22,13 +23,11 @@ namespace ShowPic.Web.Service
             }
             this._context.Pictureeditors.Add(editor);
             this._context.SaveChanges();
+            LoggerHelper.loggerHelper.Trace("  AddEditor success");
+
             return 0;
         }
 
-        //public int GetEditor(Pictureeditor editor)
-        //{
-        //    return 0;
-        //}
 
         public List<Pictureeditor> GetEditors()
         {
@@ -46,6 +45,7 @@ namespace ShowPic.Web.Service
                 this._context.Pictureeditors.Remove(pictureeditor);
                 this._context.SaveChanges();
             }
+            LoggerHelper.loggerHelper.Trace("  DeleteEditor success");
             return true;
         }
     }

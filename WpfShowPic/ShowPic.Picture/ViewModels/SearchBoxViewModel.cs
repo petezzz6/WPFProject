@@ -11,6 +11,7 @@ using ShowPic.Entity;
 using ShowPic.Utils.HttpUtils;
 using Prism.Regions;
 using ShowPic.Picture.Views;
+using ShowPic.Utils;
 
 namespace ShowPic.Picture.ViewModels
 {
@@ -43,13 +44,16 @@ namespace ShowPic.Picture.ViewModels
 
         public void SearchPicture()
         {
-           Pictureentity picture= PictureHttp.GetPicture(SearchString);
+            LoggerHelper.loggerHelper.Trace("  SearchPicture");
+            Pictureentity picture = PictureHttp.GetPicture(SearchString);
             if (picture == null)
             {
                 MessageBox.Show("图片不存在！");
             }
             else
-            {   
+            {
+                LoggerHelper.loggerHelper.Trace("  SearchPicture success");
+
                 NavigationParameters Params = new NavigationParameters();
                 Params.Add("picture",picture);
                 _regionManager.RequestNavigate("ContentRegion", nameof(SinglePictureView), Params);

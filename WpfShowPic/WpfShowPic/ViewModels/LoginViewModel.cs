@@ -81,6 +81,8 @@ namespace ShowPic.ViewModels
 
         private void AdminLogin()
         {
+            LoggerHelper.loggerHelper.Trace("AdminLogin");
+
             if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
             {
                 MessageBox.Show("用户名或密码为空，请确认");
@@ -96,6 +98,7 @@ namespace ShowPic.ViewModels
             }
             else
             {
+                LoggerHelper.loggerHelper.Trace("Login Fail");
                 MessageBox.Show("密码错误！");
                 return;
             }
@@ -122,7 +125,7 @@ namespace ShowPic.ViewModels
 
         private void visitorLogin(object obj)
         {
-
+            LoggerHelper.loggerHelper.Trace("visitorLogin");
             this._eventAggregator.GetEvent<NavEvent2>().Publish();
             RequestClose?.Invoke((new DialogResult(ButtonResult.OK)));
         }

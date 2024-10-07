@@ -12,9 +12,9 @@ namespace ShowPic.Utils.HttpUtils
 
         public static bool AddSPicutre(Pictureentity picture)
         {
-            var ret = Post<Pictureentity>(UrlConfig.PICTURE_ADDPICTURES, picture);
+            var res = Post<Pictureentity>(UrlConfig.PICTURE_ADDPICTURES, picture);
 
-            return true;
+            return Boolean.Parse(res);
         }
 
         public static Page<Pictureentity> GetPictures(string no,string tag,int pageNum,int pageSize)
@@ -34,18 +34,13 @@ namespace ShowPic.Utils.HttpUtils
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["Id"] = Id.ToString();
             var res = Delete(UrlConfig.PICTURE_DELETE, data);
-            return true;
+            return Boolean.Parse(res);
         }
 
         public static bool UpdateComment(int Id, string comment)
         {
-            //Dictionary<string, string> data = new Dictionary<string, string>();
-            //data["PicId"] = Id.ToString();
-            //data["PicDescription"] = comment;
-          
             var res = Put(UrlConfig.PICTURE_COMMENT,new Pictureentity() { PicId = Id,PicDescription = comment});
-
-            return true;
+            return Boolean.Parse(res);
         }
 
 

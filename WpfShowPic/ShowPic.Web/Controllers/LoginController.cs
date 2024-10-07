@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShowPic.Utils;
 using ShowPic.Web.Service;
 namespace ShowPic.Web.Controllers
 {
@@ -7,13 +8,10 @@ namespace ShowPic.Web.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly ILogger<LoginController> logger;
-
         private readonly ILoginService loginService;
 
-        public LoginController(ILogger<LoginController> logger, ILoginService loginAppService)
+        public LoginController( ILoginService loginAppService)
         {
-            this.logger = logger;
             this.loginService = loginAppService;
         }
 
@@ -21,6 +19,7 @@ namespace ShowPic.Web.Controllers
         [HttpGet]
         public int? Login(string username, string password)
         {
+            LoggerHelper.loggerHelper.Trace("  Login controller");
             return loginService.Login(username, password);
         }
     }

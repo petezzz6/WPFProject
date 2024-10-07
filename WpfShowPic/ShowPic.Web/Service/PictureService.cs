@@ -12,13 +12,18 @@ namespace ShowPic.Web.Service
             this._dataContext = dataContext;
         }
 
-        public int AddPicture(Pictureentity picture)
+        public bool AddPicture(Pictureentity picture)
         {
+            if (picture == null)
+            {
+                LoggerHelper.loggerHelper.Trace(" AddPicture failed");
+                return false;
+            }
             _dataContext.Pictureentities.Add(picture);
             this._dataContext.SaveChanges();
             LoggerHelper.loggerHelper.Trace(" AddPicture success");
 
-            return 0;
+            return true;
         }
 
         public Pictureentity GetPicture(string Id)
@@ -36,7 +41,6 @@ namespace ShowPic.Web.Service
                     p = _dataContext.Pictureentities.FirstOrDefault(r => r.PicTag == Id);
                 }
             }
-            LoggerHelper.loggerHelper.Trace(" DeleteEditor success");
 
             return p;
         }
@@ -48,6 +52,12 @@ namespace ShowPic.Web.Service
             {
                 _dataContext.Remove(p);
                 _dataContext.SaveChanges();
+                LoggerHelper.loggerHelper.Trace(" DB DeletePicture success");
+            }
+            else
+            {
+                LoggerHelper.loggerHelper.Trace(" DB DeletePicture failed");
+                return false;
             }
             return true;
         }
@@ -85,6 +95,13 @@ namespace ShowPic.Web.Service
             {
                 p.PicDescription = comment;
                 _dataContext.SaveChanges();
+                LoggerHelper.loggerHelper.Trace(" DB UpdateComment success");
+            }
+            else
+            {
+                LoggerHelper.loggerHelper.Trace(" DB UpdateComment failed");
+
+                return false;
             }
             return true;
         }
@@ -96,6 +113,12 @@ namespace ShowPic.Web.Service
             {
                 p.PicRate = Rate;
                 _dataContext.SaveChanges();
+                LoggerHelper.loggerHelper.Trace(" DB RatePicture success");
+            }
+            else
+            {
+                LoggerHelper.loggerHelper.Trace(" DB RatePicture failed");
+                return false;
             }
             return true;
         }

@@ -111,7 +111,7 @@ namespace ShowPic.ViewModels
 
         public void AdminNavigation()
         {
-            LoggerHelper.loggerHelper.Fatal("AdminNavigation");
+            LoggerHelper.loggerHelper.Info("AdminNavigation");
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(PictureView));
 
             _regionManager.RegisterViewWithRegion("NaviRegion", typeof(AdminNavi));

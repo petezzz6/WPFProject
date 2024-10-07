@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Prism.Commands;
 using Prism.Services.Dialogs;
+using ShowPic.Utils;
 using ShowPic.Utils.HttpUtils;
 
 namespace ShowPic.Picture.ViewModels
@@ -53,9 +54,12 @@ namespace ShowPic.Picture.ViewModels
 
         public void UpdateComment()
         {
-           var res= PictureHttp.UpdateComment(this.Id, this.Comment);
+            LoggerHelper.loggerHelper.Trace("UpdateComment ");
+            var res = PictureHttp.UpdateComment(this.Id, this.Comment);
             if (res)
             {
+                LoggerHelper.loggerHelper.Trace("UpdateComment  success");
+
                 MessageBox.Show("修改评论成功！");
                 RequestClose?.Invoke((new DialogResult(ButtonResult.OK)));
             }

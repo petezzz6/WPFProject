@@ -18,7 +18,7 @@ namespace ShowPic.Web.Controllers
 
 
         [HttpPost]
-        public int AddPictures(Pictureentity Picture)
+        public bool AddPicture(Pictureentity Picture)
         {
             return _pictureService.AddPicture(Picture);
         }

@@ -173,26 +173,6 @@ namespace ShowPic.Picture.ViewModels
             set { SetProperty(ref ratings, value); }
         }
 
-        //private DelegateCommand<object> ratePicture;
-
-
-        //public DelegateCommand<object> RatePicture
-        //{
-        //    get
-        //    {
-        //        if (ratePicture == null)
-        //        {
-        //            ratePicture = new DelegateCommand<object>(Rate);
-        //        }
-        //        return ratePicture;
-        //    }
-        //}
-
-        //public void Rate(object obj)
-        //  {
-
-        //    //Picture.Description = obj.ToString();
-        //}
 
         private DelegateCommand cancelCommand;
 

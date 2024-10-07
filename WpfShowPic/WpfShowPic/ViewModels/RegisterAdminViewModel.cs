@@ -9,6 +9,7 @@ using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using ShowPic.Entity;
+using ShowPic.Utils;
 using ShowPic.Utils.HttpUtils;
 
 namespace ShowPic.ViewModels
@@ -66,6 +67,8 @@ namespace ShowPic.ViewModels
 
         public void RegisterAdmin(object obj)
         {
+            LoggerHelper.loggerHelper.Trace("RegisterAdmin");
+
             if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
             {
                 MessageBox.Show("用户名或密码为空，请确认");
@@ -76,10 +79,14 @@ namespace ShowPic.ViewModels
             if(res == 0)
             {
                 MessageBox.Show("注册成功！请输入登录账户密码");
+
+                LoggerHelper.loggerHelper.Trace("RegisterAdmin success");
+
             }
             else if(res==1)
             {
                 MessageBox.Show("注册失败！用户已经存在");
+                LoggerHelper.loggerHelper.Trace("RegisterAdmin failed");
 
             }
             RequestClose?.Invoke((new DialogResult(ButtonResult.OK)));

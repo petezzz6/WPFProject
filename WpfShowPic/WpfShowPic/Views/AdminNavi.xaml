@@ -10,8 +10,8 @@
         <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="CornflowerBlue">
             <Button Height="100" Content="图片列表" Command="{Binding JumpCommand}" 
                     CommandParameter="PictureView" Background="Transparent" BorderThickness="0" Margin="0 190 0 20 " FontSize="35" FontFamily="微软雅黑"></Button>
-            <Button Height="100" Content="个人信息" 
-                    CommandParameter="HeaderRegionView" Background="Transparent" BorderThickness="0" FontSize="35" FontFamily="微软雅黑" Margin="0 0 0 20"></Button>
+            <!--<Button Height="100" Content="个人信息" 
+                    CommandParameter="HeaderRegionView" Background="Transparent" BorderThickness="0" FontSize="35" FontFamily="微软雅黑" Margin="0 0 0 20"></Button>-->
             <Button Height="100" Content="用户管理" Command="{Binding JumpCommand}"
                     CommandParameter="UserList" Background="Transparent" BorderThickness="0" FontSize="35" FontFamily="微软雅黑" Margin="0 0 0 20"></Button>
             <Button Height="100" Content="添加图片" Command="{Binding AddCommand}"  CommandParameter="AddPictureView"

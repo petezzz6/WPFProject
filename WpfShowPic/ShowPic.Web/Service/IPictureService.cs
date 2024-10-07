@@ -7,7 +7,7 @@ namespace ShowPic.Web.Service
     {
         public Pictureentity GetPicture(string id);
 
-        public int AddPicture(Pictureentity picture);
+        public bool AddPicture(Pictureentity picture);
 
         public Page<Pictureentity> GetPictures(int pageNum, int pageSize, string? no = null, string? tag = null);
 

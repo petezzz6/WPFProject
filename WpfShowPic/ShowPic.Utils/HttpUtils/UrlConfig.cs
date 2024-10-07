@@ -12,7 +12,7 @@ namespace ShowPic.Utils.HttpUtils
         //picture 功能
         public static string   PICTURE_GETPICTURES = "api/Picture/GetPictures";
 
-        public static string   PICTURE_ADDPICTURES = "api/Picture/AddPictures";
+        public static string   PICTURE_ADDPICTURES = "api/Picture/AddPicture";
 
         public static string   PICTURE_GETPICTURE = "api/Picture/GetPicture";
 

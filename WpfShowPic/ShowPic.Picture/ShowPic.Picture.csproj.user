@@ -8,6 +8,12 @@
     <Compile Update="Views\AddComment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddPictureWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DetailWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +35,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddComment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddPictureWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DetailWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\PageBox.xaml">

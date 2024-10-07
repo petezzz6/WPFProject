@@ -40,7 +40,7 @@ namespace ShowPic.ViewModels
 
         private void AddPicture(string ViewName)
         {
-            this._dialogService.ShowDialog(nameof(AddPictureView), null, AddPicCallBack);
+            this._dialogService.ShowDialog(nameof(AddPictureView), null, AddPicCallBack, "AddPictureWindow");
         }
 
         public void AddPicCallBack(IDialogResult dialogResult)

@@ -20,7 +20,6 @@ namespace ShowPic.Picture.Module
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<AddPictureView>();
             containerRegistry.RegisterForNavigation<PictureView>();
             containerRegistry.RegisterForNavigation<VisitorPictureView>();
             containerRegistry.RegisterForNavigation<SinglePictureView>();

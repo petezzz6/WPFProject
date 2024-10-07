@@ -23,6 +23,11 @@ namespace ShowPic.Picture.ViewModels
             get { return sourcepath; }
             set
             {
+                if (string.IsNullOrEmpty(value))
+                {
+                    MessageBox.Show("图片不能为空！");
+                    return;
+                }
                 SetProperty(ref sourcepath, value);
             }
         }
@@ -106,6 +111,11 @@ namespace ShowPic.Picture.ViewModels
 
         public void SavePicture()
         {
+            if(PicSourcePath==null|| Name==null||Tag==null|| TheRating.rateNum==-1)
+            {
+                MessageBox.Show("请输入完整数据！");
+                return;
+            }
             Picture = new Pictureentity();
             try
             {
@@ -134,11 +144,17 @@ namespace ShowPic.Picture.ViewModels
             }
         }
 
-        private Rating rating;
+        private Rating rating = new Rating(-1);
         public Rating TheRating
         {
-            get { return rating; }
-            set { SetProperty(ref rating, value); }
+            get {  return rating;}
+            set {
+                if (value==null)
+                {
+                    MessageBox.Show("评分不能为空！");
+                    return;
+                }
+                SetProperty(ref rating, value); }
         }
 
 
@@ -196,7 +212,7 @@ namespace ShowPic.Picture.ViewModels
     public class Rating
     {
 
-        public  int rateNum { get; set; }
+        public int rateNum { get; set; }
 
         public Rating(int n)
         {

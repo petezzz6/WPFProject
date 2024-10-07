@@ -31,9 +31,12 @@ namespace ShowPic
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<LoginView>();
-            containerRegistry.RegisterDialogWindow<SubWindow>();
+            containerRegistry.RegisterDialogWindow<SubWindow>("LoginWindow");
+            containerRegistry.RegisterDialogWindow<DetailWindow>("DetailWindow");
+            containerRegistry.RegisterDialogWindow<AddPictureWindow>("AddPictureWindow");
             containerRegistry.RegisterDialog<RegisterAdmin>();
             containerRegistry.RegisterDialog<AddComment>();
+            containerRegistry.RegisterDialog<AddPictureView>();
             containerRegistry.RegisterDialog<SinglePictureView, SinglePictureViewModel>();
 
             //使用单列保证生命周期 

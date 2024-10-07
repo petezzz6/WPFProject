@@ -6,9 +6,8 @@
              xmlns:local="clr-namespace:ShowPic.Picture.Views"
              mc:Ignorable="d" 
             xmlns:conv="clr-namespace:ShowPic.Picture.DataConverter"
-             Height="1080" Width="1920"
              d:DesignHeight="450" d:DesignWidth="800">
-
+  
     <UserControl.Resources>
         <conv:DataConverter x:Key="dataConverter"/>
     </UserControl.Resources>

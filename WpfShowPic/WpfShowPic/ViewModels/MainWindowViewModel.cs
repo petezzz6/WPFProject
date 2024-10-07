@@ -36,7 +36,7 @@ namespace ShowPic.ViewModels
             this._dialogService = _dialogService;
             _eventAggregator.GetEvent<NavEvent2>().Subscribe(VisitorNavigation);
             _eventAggregator.GetEvent<NavEvent>().Subscribe(AdminNavigation);
-            this._dialogService.ShowDialog(nameof(LoginView));
+            this._dialogService.ShowDialog(nameof(LoginView), null, null, "LoginWindow");
 
         }
 
@@ -58,6 +58,7 @@ namespace ShowPic.ViewModels
 
         private void LoadWindow()
         {
+
             _regionManager.RegisterViewWithRegion("HeaderRegion", typeof(SerachBox));
             _regionManager.RequestNavigate("HeaderRegion", nameof(SerachBox));
 

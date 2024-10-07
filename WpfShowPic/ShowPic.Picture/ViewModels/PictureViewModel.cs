@@ -138,6 +138,48 @@ namespace ShowPic.Picture.ViewModels
             }
         }
 
+
+
+        private DelegateCommand loadCommand;
+
+        public DelegateCommand LoadCommand
+        {
+            get
+            {
+                if (loadCommand == null)
+                {
+                    loadCommand = new DelegateCommand(LoadPic);
+                }
+                return loadCommand;
+            }
+        }
+
+
+
+        private DelegateCommand<object> showCommand;
+
+        public DelegateCommand<object> ShowCommand
+        {
+            get
+            {
+                if (showCommand == null)
+                {
+                    showCommand = new DelegateCommand<object>(Show);
+                }
+                return showCommand;
+            }
+        }
+        public void Show(object obj)
+        {
+            DialogParameters para = new DialogParameters();
+            Pictureentity pictureentity = PictureHttp.GetPicture(obj.ToString());
+            para.Add("picture", pictureentity);
+            this._dialogService.ShowDialog(nameof(SinglePictureView), para, null, "DetailWindow");
+        }
+
+
+
+
         #endregion
         public  void LoadPic()
         {
@@ -165,9 +207,7 @@ namespace ShowPic.Picture.ViewModels
 
         #region 分页
 
-        /// <summary>
-        /// 当前页码
-        /// </summary>
+
         private int pageNum;
 
         public int PageNum
@@ -176,9 +216,7 @@ namespace ShowPic.Picture.ViewModels
             set { SetProperty(ref pageNum, value); }
         }
 
-        /// <summary>
-        /// 每页显示多少条记录
-        /// </summary>
+
         private int pageSize;
 
         public int PageSize
@@ -187,9 +225,7 @@ namespace ShowPic.Picture.ViewModels
             set { SetProperty(ref pageSize, value); }
         }
 
-        /// <summary>
-        ///总条数
-        /// </summary>
+
         private int totalCount;
 
         public int TotalCount
@@ -198,9 +234,7 @@ namespace ShowPic.Picture.ViewModels
             set { SetProperty(ref totalCount, value); }
         }
 
-        /// <summary>
-        ///总页数
-        /// </summary>
+
         private int totalPage;
 
         public int TotalPage
@@ -214,9 +248,7 @@ namespace ShowPic.Picture.ViewModels
         }
 
 
-        /// <summary>
-        /// 跳转页
-        /// </summary>
+
         private int jumpNum;
 
         public int JumpNum
@@ -225,9 +257,7 @@ namespace ShowPic.Picture.ViewModels
             set { SetProperty(ref jumpNum, value); }
         }
 
-        /// <summary>
-        /// 首页命令
-        /// </summary>
+
         private DelegateCommand firstPageCommand;
 
         public DelegateCommand FirstPageCommand
@@ -249,9 +279,7 @@ namespace ShowPic.Picture.ViewModels
             this.LoadPic();
         }
 
-        /// <summary>
-        /// 跳转页命令
-        /// </summary>
+
         private DelegateCommand jumpPageCommand;
 
         public DelegateCommand JumpPageCommand
@@ -283,9 +311,7 @@ namespace ShowPic.Picture.ViewModels
             this.LoadPic();
         }
 
-        /// <summary>
-        /// 前一页
-        /// </summary>
+
         private DelegateCommand prevPageCommand;
 
         public DelegateCommand PrevPageCommand
@@ -310,9 +336,7 @@ namespace ShowPic.Picture.ViewModels
             this.LoadPic();
         }
 
-        /// <summary>
-        /// 下一页命令
-        /// </summary>
+
         private DelegateCommand nextPageCommand;
 
         public DelegateCommand NextPageCommand
@@ -337,42 +361,6 @@ namespace ShowPic.Picture.ViewModels
             this.LoadPic();
         }
 
-        private DelegateCommand loadCommand;
-
-        public DelegateCommand LoadCommand
-        {
-            get
-            {
-                if (loadCommand == null)
-                {
-                    loadCommand = new DelegateCommand(LoadPic);
-                }
-                return loadCommand;
-            }
-        }
-
-
-
-        private DelegateCommand<object> showCommand;
-
-        public DelegateCommand <object>ShowCommand
-        {
-            get
-            {
-                if (showCommand == null)
-                {
-                    showCommand = new DelegateCommand<object>(Show);
-                }
-                return showCommand;
-            }
-        }
-        public void Show(object obj)
-        {   
-            DialogParameters para = new DialogParameters();
-            Pictureentity pictureentity = PictureHttp.GetPicture(obj.ToString());
-            para.Add("picture", pictureentity);
-            this._dialogService.ShowDialog(nameof(SinglePictureView),para,null);
-        }
         #endregion
     }
 }
